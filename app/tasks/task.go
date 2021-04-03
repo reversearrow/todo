@@ -7,33 +7,33 @@ import (
 	"github.com/google/uuid"
 )
 
-type task string
+type Task string
 
-func newTaskString(t string) (*task, error) {
-	var tk task
+func NewTaskString(t string) (*Task, error) {
+	var tk Task
 	if len(t) > 64 {
 		return nil, errors.New("failed to create task string")
 	}
 
-	tk = task(t)
+	tk = Task(t)
 	return &tk, nil
 }
 
 //TaskData
 type TaskData struct {
-	id        uuid.UUID
-	task      *task
-	createdAt time.Time
+	Id        uuid.UUID
+	Task      *Task
+	CreatedAt time.Time
 }
 
-func newTask(t string) (*TaskData, error) {
+func NewTask(t string) (*TaskData, error) {
 	tk := new(TaskData)
-	tk.id = uuid.New()
-	taskString, err := newTaskString(t)
+	tk.Id = uuid.New()
+	taskString, err := NewTaskString(t)
 	if err != nil {
 		return nil, errors.New("failed to create new task")
 	}
-	tk.task = taskString
-	tk.createdAt = time.Now()
+	tk.Task = taskString
+	tk.CreatedAt = time.Now()
 	return tk, nil
 }

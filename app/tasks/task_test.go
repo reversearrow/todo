@@ -6,9 +6,9 @@ import (
 )
 
 func TestNewTask(t *testing.T) {
-	todo, err := newTask("hello")
+	todo, err := NewTask("hello")
 	if err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(todo.createdAt.Clock())
+	fmt.Println(todo.CreatedAt.Clock())
 }
