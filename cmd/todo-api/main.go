@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	"github.com/reversearrow/todo/app/todo"
+	"github.com/reversearrow/todo/app/user"
 )
 
 func main() {
@@ -28,4 +29,13 @@ func main() {
 	for _, v := range todo.Tasks {
 		fmt.Println(*v.Task)
 	}
+
+	fmt.Println("Introducing concept of a user")
+
+	u := user.NewUser()
+
+	u.TaskList.Add("Hello World")
+
+	fmt.Println(u.Id)
+	fmt.Println(*u.TaskList.Tasks[0].Task)
 }
