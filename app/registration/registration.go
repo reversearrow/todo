@@ -1,19 +1,21 @@
 package registration
 
-import "github.com/reversearrow/todo/app/user"
-
-type Registration struct {
-	Name     string
-	Email    string
-	Password string
-	Verified bool
-	UserData user.UserData
+type Users struct {
+	Users []*User
 }
 
-func NewRegistration(name, email, password string) {
-	r := new(Registration)
-	r.name = name
-	r.email = email
-	r.password = password
-	r.verified = true
+type User struct {
+	Name     string
+	Password string
+}
+
+func NewRegistration(name, password string) *User {
+	r := new(User)
+	r.Name = name
+	r.Password = password
+	return r
+}
+
+func (u *Users) AddUser(user *User) {
+	u.Users = append(u.Users, user)
 }
